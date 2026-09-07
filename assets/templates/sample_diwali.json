@@ -1,0 +1,44 @@
+{
+  "id": "template_diwali_1",
+  "occasionId": "diwali",
+  "name": "Diwali Lights - Premium",
+  "category": "indianFestival",
+  "thumbnailUrl": "",
+  "isPremium": false,
+  "culturalReviewPassed": true,
+  "fonts": ["Fraunces", "Inter", "Noto Sans Devanagari"],
+  "colors": ["#3B2452", "#E8A33D", "#FBF8F3"],
+  "canvasJson": {
+    "version": 1,
+    "pixelRatio": 2.0,
+    "background": "#FBF8F3",
+    "elements": [
+      {
+        "type": "text",
+        "content": "🪔 Happy Diwali",
+        "font": "Fraunces",
+        "size": 28,
+        "color": "#3B2452",
+        "x": 0.5,
+        "y": 0.2,
+        "alignment": "center"
+      },
+      {
+        "type": "text",
+        "content": "May this festival of lights bring joy to your home",
+        "font": "Inter",
+        "size": 14,
+        "color": "#241F26",
+        "x": 0.5,
+        "y": 0.4,
+        "alignment": "center"
+      },
+      {
+        "type": "infoBlock",
+        "fields": ["title", "date", "location"],
+        "x": 0.5,
+        "y": 0.7
+      }
+    ]
+  }
+}

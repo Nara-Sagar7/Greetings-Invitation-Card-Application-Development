@@ -1,0 +1,51 @@
+name: greetings_invitation_app
+description: "Premium, reliable invitation & greeting card app for India and diaspora - True WYSIWYG, offline-first."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  # State & Navigation - Phase A
+  flutter_riverpod: ^2.6.1
+  go_router: ^15.1.2
+  # Firebase BaaS - Recommended Stack
+  firebase_core: ^3.12.1
+  firebase_auth: ^5.5.1
+  cloud_firestore: ^5.6.9
+  firebase_storage: ^12.4.5
+  google_sign_in: ^6.3.0
+  # Offline & Local Storage
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  path_provider: ^2.1.5
+  connectivity_plus: ^6.1.4
+  # UI / Design System
+  google_fonts: ^6.2.1
+  cached_network_image: ^3.4.1
+  flutter_svg: ^2.1.0
+  # Utils
+  intl: ^0.20.2
+  uuid: ^4.5.1
+  image_picker: ^1.1.2
+  # Monetization - placeholder for Phase E
+  in_app_purchase: ^3.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  build_runner: ^2.4.13
+  hive_generator: ^2.0.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/templates/
+    - assets/stickers/
+    - assets/fonts/
