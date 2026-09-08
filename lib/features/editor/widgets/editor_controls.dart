@@ -14,6 +14,10 @@ class EditorControls extends StatelessWidget {
   final VoidCallback onRedo;
   final VoidCallback onSaveDraft;
   final VoidCallback onPreview;
+  final VoidCallback onPickImage;
+  final VoidCallback onPickSticker;
+  final VoidCallback onPickColor;
+  final VoidCallback onClearImage;
 
   const EditorControls({
     super.key,
@@ -27,6 +31,10 @@ class EditorControls extends StatelessWidget {
     required this.onRedo,
     required this.onSaveDraft,
     required this.onPreview,
+    required this.onPickImage,
+    required this.onPickSticker,
+    required this.onPickColor,
+    required this.onClearImage,
   });
 
   @override
@@ -79,17 +87,21 @@ class EditorControls extends StatelessWidget {
             child: Row(
               children: [
                 _ToolChip(icon: Icons.text_fields, label: 'Text', onTap: () {}),
-                _ToolChip(icon: Icons.photo, label: 'Photo', onTap: () {}),
-                _ToolChip(icon: Icons.crop, label: 'Crop', onTap: () {}),
+                _ToolChip(
+                  icon: Icons.photo,
+                  label: 'Photo',
+                  onTap: onPickImage,
+                ),
+                _ToolChip(icon: Icons.crop, label: 'Crop', onTap: onClearImage),
                 _ToolChip(
                   icon: Icons.emoji_emotions_outlined,
                   label: 'Sticker',
-                  onTap: () {},
+                  onTap: onPickSticker,
                 ),
                 _ToolChip(
                   icon: Icons.color_lens_outlined,
                   label: 'Color',
-                  onTap: () {},
+                  onTap: onPickColor,
                 ),
                 _ToolChip(
                   icon: Icons.undo,

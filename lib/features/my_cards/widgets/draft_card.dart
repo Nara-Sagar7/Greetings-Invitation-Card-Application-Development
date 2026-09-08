@@ -72,7 +72,8 @@ class DraftCard extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () => context.push('/editor/${draft.templateId}'),
+            onPressed: () =>
+                context.push('/editor/${draft.templateId}?draftId=${draft.id}'),
             child: const Text('Resume'),
           ),
         ],

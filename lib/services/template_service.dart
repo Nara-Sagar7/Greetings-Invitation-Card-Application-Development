@@ -1,36 +1,50 @@
 import '../core/constants/occasions.dart';
 import '../models/template_model.dart';
 
-/// Template Service - mock data for Phase A
-/// Will be replaced with Firebase Storage + Firestore in Phase B/C
-/// PRD 06.4: 18 occasions, 200 templates target (ship 150-180 first)
+/// Template Service - mock data Phase A/C
+/// Firebase Storage + Firestore in Phase B
+/// PRD 06.4: 18 occasions, 200 templates (11 each + 2 extra)
 class TemplateService {
   static List<TemplateModel> getDummyTemplates() {
     final List<TemplateModel> out = [];
+    var globalIdx = 0;
     for (final occasion in Occasions.all) {
-      for (int i = 1; i <= 3; i++) {
-        out.add(TemplateModel(
-          id: 'template_${occasion.id}_$i',
-          occasionId: occasion.id,
-          name: '${occasion.name} Template $i',
-          category: occasion.group.name,
-          thumbnailUrl: '',
-          isPremium: i == 3, // 1 in 3 is premium
-          culturalReviewPassed: !occasion.needsCulturalReview || i <= 2,
-          canvasJson: {
-            'background': occasion.accentColor.value,
-            'texts': [
-              {'type': 'heading', 'content': '${occasion.emoji} ${occasion.name}'},
-              {'type': 'body', 'content': 'You are invited!'},
-            ],
-            'version': 1,
-          },
-          fonts: ['Fraunces', 'Inter'],
-          colors: ['#3B2452', '#E8A33D', '#FBF8F3'],
-        ));
+      // 11 per occasion = 198, add 2 extra for birthday/diwali to reach 200
+      final count = (occasion.id == 'birthday' || occasion.id == 'diwali')
+          ? 12
+          : 11;
+      for (int i = 1; i <= count; i++) {
+        globalIdx++;
+        final isPremium = globalIdx % 3 == 0; // ~33% premium
+        final thumbSeed = 'template_${occasion.id}_$i';
+        out.add(
+          TemplateModel(
+            id: thumbSeed,
+            occasionId: occasion.id,
+            name: '${occasion.name} Template $i',
+            category: occasion.group.name,
+            thumbnailUrl: 'https://picsum.photos/seed/$thumbSeed/540/756',
+            isPremium: isPremium,
+            culturalReviewPassed: !occasion.needsCulturalReview || i <= 8,
+            canvasJson: {
+              'background': occasion.accentColor.toARGB32(),
+              'texts': [
+                {
+                  'type': 'heading',
+                  'content': '${occasion.emoji} ${occasion.name}',
+                },
+                {'type': 'body', 'content': 'You are invited!'},
+              ],
+              'version': 1,
+              'accentColor': occasion.accentColor.toARGB32(),
+            },
+            fonts: ['Fraunces', 'Inter', 'Noto Sans Devanagari'],
+            colors: ['#3B2452', '#E8A33D', '#FBF8F3'],
+          ),
+        );
       }
     }
-    return out; // 18 * 3 = 54 dummy (will grow to 200)
+    return out; // 200
   }
 
   static List<TemplateModel> byOccasion(String occasionId) =>

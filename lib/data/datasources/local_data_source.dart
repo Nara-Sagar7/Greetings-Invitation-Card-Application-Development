@@ -16,18 +16,18 @@ class LocalDataSource {
   static const _draftsBox = 'drafts';
   static const _queueBox = 'offline_queue';
 
-  Future<Box> _draftsBoxOpen() async {
-    if (!Hive.isBoxOpen(_draftsBox)) {
-      return Hive.openBox(_draftsBox);
+  Future<Box<EventModel>> _draftsBoxOpen() async {
+    if (Hive.isBoxOpen(_draftsBox)) {
+      return Hive.box<EventModel>(_draftsBox);
     }
-    return Hive.box(_draftsBox);
+    return Hive.openBox<EventModel>(_draftsBox);
   }
 
   Future<Box> _queueBoxOpen() async {
-    if (!Hive.isBoxOpen(_queueBox)) {
-      return Hive.openBox(_queueBox);
+    if (Hive.isBoxOpen(_queueBox)) {
+      return Hive.box(_queueBox);
     }
-    return Hive.box(_queueBox);
+    return Hive.openBox(_queueBox);
   }
 
   // Templates: try bundled JSON, fallback to
@@ -67,29 +67,22 @@ class LocalDataSource {
 
   List<Occasion> get occasions => Occasions.all;
 
-  // Drafts — stored as EventModel JSON maps
+  // Drafts — typed Hive box P0-1
   Future<void> saveDraft(EventModel event) async {
     final box = await _draftsBoxOpen();
-    await box.put(event.id, {
-      ...event.toJson(),
-      'localTimestamp': DateTime.now().toIso8601String(),
-      'syncStatus': 'pending',
-    });
+    await box.put(event.id, event);
   }
 
   Future<EventModel?> getDraft(String id) async {
     final box = await _draftsBoxOpen();
-    final raw = box.get(id);
-    if (raw == null) return null;
-    return _eventFromMap(Map<String, dynamic>.from(raw as Map));
+    return box.get(id);
   }
 
   Future<List<EventModel>> getDrafts() async {
     final box = await _draftsBoxOpen();
-    return box.values
-        .map((e) => _eventFromMap(Map<String, dynamic>.from(e as Map)))
-        .toList()
+    final list = box.values.toList()
       ..sort((a, b) => b.updatedAt.compareTo(a.updatedAt));
+    return list;
   }
 
   Future<void> deleteDraft(String id) async {
@@ -104,26 +97,5 @@ class LocalDataSource {
       'payload': payload,
       'timestamp': DateTime.now().toIso8601String(),
     });
-  }
-
-  EventModel _eventFromMap(Map<String, dynamic> j) {
-    return EventModel(
-      id: j['id'] as String,
-      hostId: j['hostId'] as String? ?? 'local_user',
-      title: j['title'] as String? ?? '',
-      dateTime:
-          DateTime.tryParse(j['dateTime'] as String? ?? '') ?? DateTime.now(),
-      timezone: j['timezone'] as String? ?? 'Asia/Kolkata',
-      location: j['location'] as String? ?? '',
-      description: j['description'] as String? ?? '',
-      templateId: j['templateId'] as String? ?? '',
-      canvasJson: Map<String, dynamic>.from(j['canvasJson'] as Map? ?? {}),
-      status: j['status'] as String? ?? 'draft',
-      guestEmails: List<String>.from(j['guestEmails'] ?? []),
-      createdAt:
-          DateTime.tryParse(j['createdAt'] as String? ?? '') ?? DateTime.now(),
-      updatedAt:
-          DateTime.tryParse(j['updatedAt'] as String? ?? '') ?? DateTime.now(),
-    );
   }
 }

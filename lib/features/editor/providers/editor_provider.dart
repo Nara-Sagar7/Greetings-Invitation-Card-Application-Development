@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/providers/data_providers.dart';
@@ -41,6 +43,21 @@ class EditorNotifier extends StateNotifier<EditorState> {
     state = state.copyWith(canvasJson: j, isDirty: true);
   }
 
+  void updateTitleOffset(Offset o) {
+    _pushHistory();
+    state = state.copyWith(titleOffset: o, isDirty: true);
+  }
+
+  void updateImagePath(String? path) {
+    _pushHistory();
+    state = state.copyWith(imagePath: path, isDirty: true);
+  }
+
+  void updateSticker(String? s) {
+    _pushHistory();
+    state = state.copyWith(sticker: s, isDirty: true);
+  }
+
   void undo() {
     if (!canUndo) return;
     _redo.add(state);
@@ -71,6 +88,10 @@ class EditorNotifier extends StateNotifier<EditorState> {
         ...state.canvasJson,
         'title': state.title,
         'fontSize': state.fontSize,
+        'titleOffsetDx': state.titleOffset.dx,
+        'titleOffsetDy': state.titleOffset.dy,
+        'imagePath': state.imagePath,
+        'sticker': state.sticker,
       },
       status: 'draft',
       guestEmails: const [],
@@ -95,6 +116,12 @@ class EditorNotifier extends StateNotifier<EditorState> {
       fontSize: (d.canvasJson['fontSize'] as num?)?.toDouble() ?? 18,
       canvasJson: d.canvasJson,
       isDirty: false,
+      titleOffset: Offset(
+        (d.canvasJson['titleOffsetDx'] as num?)?.toDouble() ?? 0,
+        (d.canvasJson['titleOffsetDy'] as num?)?.toDouble() ?? 0,
+      ),
+      imagePath: d.canvasJson['imagePath'] as String?,
+      sticker: d.canvasJson['sticker'] as String?,
     );
     _undo.clear();
     _redo.clear();

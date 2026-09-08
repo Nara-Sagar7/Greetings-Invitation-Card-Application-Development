@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "562210781504",
+    "project_id": "greetings-world-atelier",
+    "storage_bucket": "greetings-world-atelier.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562210781504:android:347024960faeeb3194a2a5",
+        "android_client_info": {
+          "package_name": "com.greetings.app.greetings_invitation_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl734of6Z2QnzIQENxPCLkPfWNw7YpcRY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

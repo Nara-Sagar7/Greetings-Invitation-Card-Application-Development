@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'app_colors.dart';
 
 /// AppTheme - PRD Section 08
@@ -110,10 +111,8 @@ class AppTheme {
       onPrimary: AppColors.darkBackground,
       onSurface: AppColors.darkText,
     ),
-    textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme).apply(
-      bodyColor: AppColors.darkText,
-      displayColor: AppColors.darkText,
-    ),
+    textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme)
+        .apply(bodyColor: AppColors.darkText, displayColor: AppColors.darkText),
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.darkBackground,
       foregroundColor: AppColors.darkText,

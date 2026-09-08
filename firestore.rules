@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Deny by default - explicit allow only
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    // Public templates - read only
+    match /templates/{templateId} {
+      allow read: if true;
+      allow write: if false; // only via admin SDK
+    }
+    // User private data - owner only
+    match /users/{userId}/{document=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    // Events - per-event access via rsvp docs
+    match /events/{eventId} {
+      allow read: if true; // link-based access, no auth required for guest
+      allow write: if request.auth != null;
+      match /rsvps/{email} {
+        allow read, write: if true; // guest can write own rsvp, host can read all
+      }
+      match /opens/{email} {
+        allow read, write: if true;
+      }
+    }
+    // Analytics - owner only
+    match /analytics/{id} {
+      allow create: if true;
+      allow read: if request.auth != null;
+      allow update, delete: if false;
+    }
+  }
+}

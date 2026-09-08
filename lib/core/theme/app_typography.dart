@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'app_colors.dart';
 
 /// Typography System - PRD Section 08
 /// Headings: Fraunces / Playfair Display (premium editorial)

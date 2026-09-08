@@ -4,11 +4,19 @@ import 'package:flutter/material.dart';
 /// Premium • Reliable • Indian-First
 class AppColors {
   // Primary Palette
-  static const twilightPlum = Color(0xFF3B2452); // PRIMARY - Premium formal+festive
-  static const marigoldGold = Color(0xFFE8A33D); // ACCENT - Bridges Indian decor + Western
-  static const blushCoral = Color(0xFFF2726F); // SECONDARY ACCENT - Love/celebration
+  static const twilightPlum = Color(
+    0xFF3B2452,
+  ); // PRIMARY - Premium formal+festive
+  static const marigoldGold = Color(
+    0xFFE8A33D,
+  ); // ACCENT - Bridges Indian decor + Western
+  static const blushCoral = Color(
+    0xFFF2726F,
+  ); // SECONDARY ACCENT - Love/celebration
   static const warmIvory = Color(0xFFFBF8F3); // BACKGROUND - Neutral warmth
-  static const charcoalInk = Color(0xFF241F26); // TEXT - High contrast softer than black
+  static const charcoalInk = Color(
+    0xFF241F26,
+  ); // TEXT - High contrast softer than black
 
   // Semantic Tokens
   static const success = Color(0xFF2E9E6D);
