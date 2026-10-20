@@ -6,13 +6,17 @@
  * Zero npm dependencies (Node 18+ global fetch; tested on Node 24).
  *
  * Usage:
+ *   node tools/template_factory/generate.js --provider cloudflare
  *   node tools/template_factory/generate.js --provider pollinations --limit 2
  *   node tools/template_factory/generate.js --provider gemini
  *   node tools/template_factory/generate.js --dry-run
  *
  * Providers:
- *   pollinations  Keyless, free, no signup (https://pollinations.ai). Default.
- *   gemini        Free tier. Set GEMINI_API_KEY (https://aistudio.google.com).
+ *   cloudflare   ~120+ images/day free (10k neurons), commercial OK.
+ *                Set CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN.
+ *   pollinations Keyless (1 img/IP/hour) or free account credits. Default.
+ *   gemini       Image output "not available" on free tier since 2026-10;
+ *                kept for paid keys. Set GEMINI_API_KEY.
  */
 
 'use strict';
@@ -70,6 +74,50 @@ async function fetchImage(job) {
     if (!res.ok) throw new Error(`HTTP ${res.status} for ${job.id}`);
     const type = res.headers.get('content-type') || '';
     if (!type.startsWith('image/')) throw new Error(`Not an image (${type}) for ${job.id}`);
+    return Buffer.from(await res.arrayBuffer());
+  }
+  if (provider === 'cloudflare') {
+    // Workers AI: FLUX schnell, ~82 neurons per 1056x1472 4-step image.
+    // 10k neurons/day free -> ~120 images/day, commercial use OK.
+    const account = process.env.CLOUDFLARE_ACCOUNT_ID;
+    const token = process.env.CLOUDFLARE_API_TOKEN;
+    if (!account || !token) {
+      throw new Error(
+        'Set CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN env vars ' +
+          'to use --provider cloudflare (free at dash.cloudflare.com)',
+      );
+    }
+    const model = get('model', '@cf/black-forest-labs/flux-1-schnell');
+    const url =
+      `https://api.cloudflare.com/client/v4/accounts/${account}/ai/run/${model}`;
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        prompt: `${job.prompt}. Composition suits a tall ${W}x${H} card.`,
+        steps: 4,
+        width: 1056,
+        height: 1472,
+      }),
+      signal: AbortSignal.timeout(180_000),
+    });
+    if (!res.ok) {
+      throw new Error(`Cloudflare HTTP ${res.status}: ${await res.text()}`);
+    }
+    const type = (res.headers.get('content-type') || '').toLowerCase();
+    if (type.includes('json')) {
+      const json = await res.json();
+      if (json.success === false) {
+        throw new Error(`Cloudflare: ${JSON.stringify(json.errors)}`);
+      }
+      const b64 =
+        typeof json.result === 'string' ? json.result : json.result?.image;
+      if (!b64) throw new Error(`No image base64 for ${job.id}`);
+      return Buffer.from(b64, 'base64');
+    }
     return Buffer.from(await res.arrayBuffer());
   }
   if (provider === 'gemini') {
