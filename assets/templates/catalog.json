@@ -88,5 +88,50 @@
       "#6B2D3F",
       "#F07E4C"
     ]
+  },
+  {
+    "id": "diwali-abstract-lantern",
+    "occasionId": "diwali",
+    "name": "Amber Glow",
+    "category": "indianFestival",
+    "thumbnailUrl": "assets/templates/diwali/diwali-abstract-lantern.jpg",
+    "isPremium": false,
+    "culturalReviewPassed": false,
+    "canvasJson": {
+      "size": {
+        "w": 1050,
+        "h": 1470
+      },
+      "backgroundImagePath": "assets/templates/diwali/diwali-abstract-lantern.jpg",
+      "texts": [
+        {
+          "text": "Amber Glow",
+          "dx": 0.5,
+          "dy": 0.16,
+          "fontSize": 65,
+          "font": "Great Vibes",
+          "color": "#FFFFFF",
+          "maxLines": 2
+        }
+      ],
+      "palette": [
+        "#160A12",
+        "#FFD48A",
+        "#FFF1D6",
+        "#4A1D33",
+        "#E97F3C"
+      ]
+    },
+    "fonts": [
+      "Great Vibes",
+      "Inter"
+    ],
+    "colors": [
+      "#160A12",
+      "#FFD48A",
+      "#FFF1D6",
+      "#4A1D33",
+      "#E97F3C"
+    ]
   }
 ]
