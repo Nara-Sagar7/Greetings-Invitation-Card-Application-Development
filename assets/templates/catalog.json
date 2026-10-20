@@ -1,0 +1,92 @@
+[
+  {
+    "id": "diwali-folkart-diya",
+    "occasionId": "diwali",
+    "name": "Festival of Lights",
+    "category": "indianFestival",
+    "thumbnailUrl": "assets/templates/diwali/diwali-folkart-diya.jpg",
+    "isPremium": false,
+    "culturalReviewPassed": false,
+    "canvasJson": {
+      "size": {
+        "w": 1050,
+        "h": 1470
+      },
+      "backgroundImagePath": "assets/templates/diwali/diwali-folkart-diya.jpg",
+      "texts": [
+        {
+          "text": "Festival of Lights",
+          "dx": 0.5,
+          "dy": 0.16,
+          "fontSize": 65,
+          "font": "Great Vibes",
+          "color": "#FFFFFF",
+          "maxLines": 2
+        }
+      ],
+      "palette": [
+        "#1A0B0F",
+        "#E8A33D",
+        "#FFF4E0",
+        "#3B2452",
+        "#FF8C42"
+      ]
+    },
+    "fonts": [
+      "Great Vibes",
+      "Inter"
+    ],
+    "colors": [
+      "#1A0B0F",
+      "#E8A33D",
+      "#FFF4E0",
+      "#3B2452",
+      "#FF8C42"
+    ]
+  },
+  {
+    "id": "diwali-marigold-watercolor",
+    "occasionId": "diwali",
+    "name": "Marigold Nights",
+    "category": "indianFestival",
+    "thumbnailUrl": "assets/templates/diwali/diwali-marigold-watercolor.jpg",
+    "isPremium": true,
+    "culturalReviewPassed": false,
+    "canvasJson": {
+      "size": {
+        "w": 1050,
+        "h": 1470
+      },
+      "backgroundImagePath": "assets/templates/diwali/diwali-marigold-watercolor.jpg",
+      "texts": [
+        {
+          "text": "Marigold Nights",
+          "dx": 0.5,
+          "dy": 0.16,
+          "fontSize": 65,
+          "font": "Pinyon Script",
+          "color": "#FFFFFF",
+          "maxLines": 2
+        }
+      ],
+      "palette": [
+        "#241017",
+        "#F2B53C",
+        "#FFF8EA",
+        "#6B2D3F",
+        "#F07E4C"
+      ]
+    },
+    "fonts": [
+      "Pinyon Script",
+      "Inter"
+    ],
+    "colors": [
+      "#241017",
+      "#F2B53C",
+      "#FFF8EA",
+      "#6B2D3F",
+      "#F07E4C"
+    ]
+  }
+]

@@ -1,0 +1,142 @@
+{
+  "imageSize": { "width": 1050, "height": 1470 },
+  "defaults": {
+    "fonts": ["Fraunces", "Inter"],
+    "colors5": ["#1A0B0F", "#E8A33D", "#FFF4E0", "#3B2452", "#FF8C42"],
+    "isPremium": false
+  },
+  "jobs": [
+    {
+      "id": "diwali-folkart-diya",
+      "occasion": "diwali",
+      "title": "Festival of Lights",
+      "slug": "diwali-folkart-diya",
+      "isPremium": false,
+      "displayFont": "Great Vibes",
+      "palette": ["#1A0B0F", "#E8A33D", "#FFF4E0", "#3B2452", "#FF8C42"],
+      "seed": 11,
+      "prompt": "Elegant Indian Diwali greeting card background, folk-art style glowing clay diya oil lamp with soft flame, scattered marigold petals and tiny gold lotus motifs on deep maroon-plum night background, gold foil rangoli border frame with generous empty center space, flat vector folk illustration, warm candlelight glow, no text, no words, no letters, no watermark"
+    },
+    {
+      "id": "diwali-marigold-watercolor",
+      "occasion": "diwali",
+      "title": "Marigold Nights",
+      "slug": "diwali-marigold-watercolor",
+      "isPremium": true,
+      "displayFont": "Pinyon Script",
+      "palette": ["#241017", "#F2B53C", "#FFF8EA", "#6B2D3F", "#F07E4C"],
+      "seed": 23,
+      "prompt": "Luxury Diwali invitation card background, loose watercolor garlands of marigold and jasmine across the top edge, tiny sparkling string lights along the bottom, soft blush to deep plum gradient wash, muted pastel palette with brushed gold accents, art-print quality, generous uncluttered center, no text, no words, no letters, no watermark"
+    },
+    {
+      "id": "diwali-abstract-lantern",
+      "occasion": "diwali",
+      "title": "Amber Glow",
+      "slug": "diwali-abstract-lantern",
+      "isPremium": false,
+      "displayFont": "Great Vibes",
+      "palette": ["#160A12", "#FFD48A", "#FFF1D6", "#4A1D33", "#E97F3C"],
+      "seed": 37,
+      "prompt": "Modern minimal Diwali e-card background, abstract golden paper lantern silhouettes and gentle bokeh glow floating on midnight indigo, thin geometric gold line mandala in one corner only, contemporary editorial poster style, muted tones, large calm empty space for text, no text, no words, no letters, no watermark"
+    },
+    {
+      "id": "wedding-floral-arch",
+      "occasion": "wedding",
+      "title": "Our Wedding",
+      "slug": "wedding-floral-arch",
+      "isPremium": false,
+      "displayFont": "Parisienne",
+      "palette": ["#2C1E2E", "#D8B4C8", "#FBF5F0", "#5A3B54", "#E7E1D5"],
+      "seed": 51,
+      "prompt": "Refined wedding invitation background, delicate blush roses and eucalyptus garland forming a soft arch along the top border, cream cotton-paper texture, muted plum and sage tones with fine gold hairline frame, editorial stationery design, large airy center for names, no text, no words, no letters, no watermark"
+    },
+    {
+      "id": "wedding-marigold-ceremony",
+      "occasion": "wedding",
+      "title": "Sangeet Ceremony",
+      "slug": "wedding-marigold-ceremony",
+      "isPremium": true,
+      "displayFont": "Cormorant Garamond",
+      "palette": ["#3B2452", "#F2B53C", "#FFF3E4", "#942F49", "#E88DA4"],
+      "seed": 64,
+      "prompt": "Indian wedding sangeet invitation background, cascading marigold strings and small hanging brass bells across the top corners, deep royal plum background with warm amber glow, subtle mandala watermark texture low in center, painted folk style, generous center space, no text, no words, no letters, no watermark"
+    },
+    {
+      "id": "wedding-gold-mono",
+      "occasion": "wedding",
+      "title": "Golden Hour",
+      "slug": "wedding-gold-mono",
+      "isPremium": false,
+      "displayFont": "Great Vibes",
+      "palette": ["#1F1B18", "#D4AF37", "#F9F4EA", "#5C4A3D", "#E9DFCB"],
+      "seed": 78,
+      "prompt": "Minimal luxury wedding card background, single continuous inked line-art of intertwined peacocks meeting at a lotus, metallic gold foil texture on deep espresso black, tiny gold speck stars scattered thin, high-end stationery aesthetic, mostly empty elegant space, no text, no words, no letters, no watermark"
+    },
+    {
+      "id": "birthday-confetti-pop",
+      "occasion": "birthday",
+      "title": "Birthday Wishes",
+      "slug": "birthday-confetti-pop",
+      "isPremium": false,
+      "displayFont": "Great Vibes",
+      "palette": ["#2A2440", "#E8A33D", "#FFF6E5", "#F2726F", "#3D7EBF"],
+      "seed": 91,
+      "prompt": "Playful premium birthday card background, watercolor confetti bursts, small painted gift boxes and curling ribbons in a cheerful ring around the edges, warm cream paper base, coral amber and teal accents, modern flat illustration with soft grain, big open center, no text, no words, no letters, no watermark"
+    },
+    {
+      "id": "birthday-gold-balloon",
+      "occasion": "birthday",
+      "title": "Golden Age",
+      "slug": "birthday-gold-balloon",
+      "isPremium": true,
+      "displayFont": "Pinyon Script",
+      "palette": ["#23303B", "#FFD48A", "#FFF2DC", "#2E9E6D", "#E97F3C"],
+      "seed": 102,
+      "prompt": "Milestone birthday e-card background, painted gold-foil balloons and a thin gold foil 'spark candle' cluster floating toward one upper corner, deep teal-navy wash, muted elegant palette, luxury greeting aesthetic, abundant clean center space, no text, no words, no letters, no watermark"
+    },
+    {
+      "id": "new-baby-pastel-cloud",
+      "occasion": "new_baby",
+      "title": "Welcome Little One",
+      "slug": "new-baby-pastel-cloud",
+      "isPremium": false,
+      "displayFont": "Parisienne",
+      "palette": ["#3E3A55", "#F3D5DE", "#FFFBF7", "#7EA8BE", "#E88DA4"],
+      "seed": 115,
+      "prompt": "Soft newborn announcement background, dreamy watercolor clouds and tiny cotton star, a sleeping pastel moon and feather drifting, blush pink and powder blue wash on near-white, gentle grain, calm storybook nursery illustration style, generous middle space, no text, no words, no letters, no watermark"
+    },
+    {
+      "id": "thank-you-sprig",
+      "occasion": "thank_you",
+      "title": "With Gratitude",
+      "slug": "thank-you-sprig",
+      "isPremium": false,
+      "displayFont": "Fraunces",
+      "palette": ["#33403A", "#2E9E6D", "#FFF8EE", "#C9A24B", "#E7E1D5"],
+      "seed": 129,
+      "prompt": "Elegant thank-you note card background, single fine-line watercolor eucalyptus sprig arcing across the top-left corner, kraft-textured off-white base, muted forest green and antique gold, modern serif stationery style, vast clean negative space, no text, no words, no letters, no watermark"
+    },
+    {
+      "id": "eid-lantern-green",
+      "occasion": "eid",
+      "title": "Eid Mubarak",
+      "slug": "eid-lantern-green",
+      "isPremium": false,
+      "displayFont": "Great Vibes",
+      "palette": ["#0F2A25", "#F2B53C", "#FFF7E8", "#2E9E6D", "#E8D9B0"],
+      "seed": 143,
+      "prompt": "Serene Eid celebration background, ornate brass fanous lanterns with warm glow hanging from the top edge, thin crescent moon and small stars, deep emerald green with antique gold accents,moody painterly glow, symmetric and calm, large clear center space, no text, no words, no letters, no watermark"
+    },
+    {
+      "id": "christmas-pine-wreath",
+      "occasion": "christmas",
+      "title": "Season's Joy",
+      "slug": "christmas-pine-wreath",
+      "isPremium": false,
+      "displayFont": "Pinyon Script",
+      "palette": ["#1E2A26", "#D64550", "#FFF8EF", "#2E7D32", "#F2B53C"],
+      "seed": 157,
+      "prompt": "Festive Christmas greeting background, hand-painted pine and cedar wreath with small berries and brass bells arranged loosely around the outer frame, cream linen base, muted crimson and forest green with brushed gold, cozy editorial illustration, readable open middle, no text, no words, no letters, no watermark"
+    }
+  ]
+}

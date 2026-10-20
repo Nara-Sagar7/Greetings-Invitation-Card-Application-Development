@@ -30,20 +30,35 @@ class LocalDataSource {
     return Hive.openBox(_queueBox);
   }
 
-  // Templates: try bundled JSON, fallback to
-  // TemplateService dummy (54 templates).
+  // Templates: try bundled catalog.json (Template
+  // Factory output), fallback to TemplateService
+  // dummy. Entries with backgroundImagePath render
+  // real art; CanvasRenderer supports it.
   Future<List<TemplateModel>> loadTemplates({String? occasionId}) async {
     final List<TemplateModel> out = [];
-    // Try to load sample_diwali.json as proof of
-    // asset pipeline; ignore failures gracefully.
+    // Preferred: catalog.json produced by
+    // tools/template_factory/generate.js.
+    try {
+      final raw = await rootBundle.loadString('assets/templates/catalog.json');
+      final json = jsonDecode(raw) as List<dynamic>;
+      out.addAll(
+        json.whereType<Map<String, dynamic>>().map(TemplateModel.fromJson),
+      );
+    } catch (_) {
+      // No catalog or malformed — fallback below.
+    }
+    // Legacy single-sample asset kept until fully
+    // replaced by factory output.
     try {
       final raw = await rootBundle.loadString(
         'assets/templates/sample_diwali.json',
       );
       final json = jsonDecode(raw) as Map<String, dynamic>;
-      out.add(TemplateModel.fromJson(json));
+      if (!out.any((e) => e.id == json['id'])) {
+        out.add(TemplateModel.fromJson(json));
+      }
     } catch (_) {
-      // No asset or malformed — fallback below.
+      // No asset or malformed — ignore.
     }
 
     final dummy = TemplateService.getDummyTemplates();

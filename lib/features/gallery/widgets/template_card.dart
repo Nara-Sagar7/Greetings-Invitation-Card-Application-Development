@@ -55,21 +55,37 @@ class TemplateCard extends StatelessWidget {
                         borderRadius: const BorderRadius.vertical(
                           top: Radius.circular(16),
                         ),
-                        child: CachedNetworkImage(
-                          imageUrl: template.thumbnailUrl,
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                          height: double.infinity,
-                          placeholder: (_, __) => const Center(
-                            child: Icon(
-                              Icons.image_outlined,
-                              color: AppColors.hint,
-                            ),
-                          ),
-                          errorWidget: (_, __, ___) => const Center(
-                            child: Text('🎨', style: TextStyle(fontSize: 36)),
-                          ),
-                        ),
+                        child: template.thumbnailUrl.startsWith('assets/')
+                            ? Image.asset(
+                                template.thumbnailUrl,
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                                height: double.infinity,
+                                errorBuilder: (_, __, ___) => const Center(
+                                  child: Text(
+                                    '🎨',
+                                    style: TextStyle(fontSize: 36),
+                                  ),
+                                ),
+                              )
+                            : CachedNetworkImage(
+                                imageUrl: template.thumbnailUrl,
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                                height: double.infinity,
+                                placeholder: (_, __) => const Center(
+                                  child: Icon(
+                                    Icons.image_outlined,
+                                    color: AppColors.hint,
+                                  ),
+                                ),
+                                errorWidget: (_, __, ___) => const Center(
+                                  child: Text(
+                                    '🎨',
+                                    style: TextStyle(fontSize: 36),
+                                  ),
+                                ),
+                              ),
                       )
                     else
                       Center(

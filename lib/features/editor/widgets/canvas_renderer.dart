@@ -35,6 +35,7 @@ class CanvasRenderer extends StatelessWidget {
     final bgColor = accent != null
         ? Color(accent).withValues(alpha: 0.06)
         : AppColors.warmIvory;
+    final bgPath = state.canvasJson['backgroundImagePath'] as String?;
     return Container(
       decoration: BoxDecoration(
         color: AppColors.surface,
@@ -60,6 +61,14 @@ class CanvasRenderer extends StatelessWidget {
                 child: Stack(
                   children: [
                     Positioned.fill(child: Container(color: bgColor)),
+                    if (bgPath != null)
+                      Positioned.fill(
+                        child: Image.asset(
+                          bgPath,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                        ),
+                      ),
                     if (state.imagePath != null)
                       Positioned.fill(
                         child: Image.file(
@@ -73,11 +82,15 @@ class CanvasRenderer extends StatelessWidget {
                         padding: const EdgeInsets.all(24),
                         child: Container(
                           padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: AppColors.surface.withValues(alpha: 0.92),
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(color: AppColors.border),
-                          ),
+                          decoration: bgPath != null
+                              ? null
+                              : BoxDecoration(
+                                  color: AppColors.surface.withValues(
+                                    alpha: 0.92,
+                                  ),
+                                  borderRadius: BorderRadius.circular(16),
+                                  border: Border.all(color: AppColors.border),
+                                ),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -94,7 +107,9 @@ class CanvasRenderer extends StatelessWidget {
                                     style: AppTypography.headingPlayfair
                                         .copyWith(
                                           fontSize: state.fontSize,
-                                          color: AppColors.twilightPlum,
+                                          color: bgPath != null
+                                              ? Colors.white
+                                              : AppColors.twilightPlum,
                                         ),
                                     textAlign: TextAlign.center,
                                   ),
